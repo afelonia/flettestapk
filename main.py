@@ -11,9 +11,10 @@ def main (page: ft.Page):
     page.window.center=True
     page.title="myConverter"
 
+   
 
     # USER INPUT FOR VALUE TO BE CONVERTED
-    userinput=TextField(value=1,label='value to convert',width=0.4*page.window.width,text_align=TextAlign.CENTER,autofocus=True,keyboard_type=KeyboardType.NUMBER,adaptive=True,label_style=TextStyle(size=12.5,weight=FontWeight.BOLD))
+    userinput=TextField(value=1,label='value to convert',bgcolor="#B0B0B0",width=0.6*page.window.width,text_align=TextAlign.CENTER,autofocus=True,keyboard_type=KeyboardType.NUMBER,adaptive=True,label_style=TextStyle(size=18,weight=FontWeight.BOLD),)
     userinputValue=userinput.value
     # CHECK VALIDITY FOR USER INPUT4
     def checkField(e):
@@ -552,8 +553,8 @@ def main (page: ft.Page):
             elif fromLengthDropdown.value==area4 and toLengthDropdown.value==str(list(areaList.keys())[2]):
                 outputField.value=acresTo_sq_Yard=format(userinputValue*list(areaList.values())[4]/list(areaList.values())[2],",")
                 outputField.update()
-            elif fromLengthDropdown.value==area4 and toLengthDropdown.value==str(list(areaList.keys())[4]):
-                outputField.value=acresTo_sq_acres=format(userinputValue*list(areaList.values())[4]/list(areaList.values())[3],",")
+            elif fromLengthDropdown.value==area4 and toLengthDropdown.value==str(list(areaList.keys())[3]):
+                outputField.value=acresTo_sq_Miles=format(userinputValue*list(areaList.values())[4]/list(areaList.values())[3],",")
                 outputField.update()
             elif fromLengthDropdown.value==area4 and toLengthDropdown.value==str(list(areaList.keys())[5]):
                 outputField.value=acresTo_sq_hectares=format(userinputValue*list(areaList.values())[4]/list(areaList.values())[5],",")
@@ -584,8 +585,8 @@ def main (page: ft.Page):
             elif fromLengthDropdown.value==area5 and toLengthDropdown.value==str(list(areaList.keys())[4]):
                 outputField.value=sq_hectaresTo_sq_acres=format(userinputValue*list(areaList.values())[5]/list(areaList.values())[4],",")
                 outputField.update()
-            elif fromLengthDropdown.value==area5 and toLengthDropdown.value==str(list(areaList.keys())[5]):
-                outputField.value=sq_hectaresTo_sq_hectares=format(userinputValue*list(areaList.values())[4]/list(areaList.values())[5],",")
+            elif fromLengthDropdown.value==area5 and toLengthDropdown.value==str(list(areaList.keys())[3]):
+                outputField.value=sq_hectaresTo_sq_miles=format(userinputValue*list(areaList.values())[4]/list(areaList.values())[3],",")
                 outputField.update()
             elif fromLengthDropdown.value==area5 and toLengthDropdown.value==str(list(areaList.keys())[6]):
                 outputField.value=sq_hectaresTo_sq_milimeters=format(userinputValue*list(areaList.values())[5]/list(areaList.values())[6],",")
@@ -616,8 +617,8 @@ def main (page: ft.Page):
             elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[5]):
                 outputField.value=sq_MilimetersTo_sq_hectares=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[5],",")
                 outputField.update()
-            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[6]):
-                outputField.value=sq_MilimetersTo_sq_milimeters=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[6],",")
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[3]):
+                outputField.value=sq_MilimetersTo_sq_miles=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[3],",")
                 outputField.update()
             elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[7]):
                 outputField.value=sq_MilimetersTo_sq_centimeters=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[7],",")
@@ -630,65 +631,36 @@ def main (page: ft.Page):
                 outputField.update()
                 """ ...................FROM SQUARE  CENTIMETERS..............."""
 
-            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[0]):
-                outputField.value=sq_centimetersTo_sq_inch=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[0],",")
-                outputField.update()
-            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[1]):
-                outputField.value=sq_centimetersTo_sq_feet=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[1],",")
-                outputField.update()
-            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[2]):
-                outputField.value=sq_centimetersTo_sq_Yard=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[2],",")
-                outputField.update()
-            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[4]):
-                outputField.value=sq_centimetersTo_sq_acres=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[4],",")
-                outputField.update()
-            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[5]):
-                outputField.value=sq_centimetersTo_sq_hectares=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[5],",")
-                outputField.update()
-            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[6]):
-                outputField.value=sq_centimetersTo_sq_milimeters=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[6],",")
-                outputField.update()
-            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[7]):
-                outputField.value=sq_centimetersTo_sq_centimeters=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[7],",")
-                outputField.update()
-            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[8]):
-                outputField.value=sq_centimetersTo_sq_meters=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[8],",")
-                outputField.update()
-            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[9]):
-                outputField.value=sq_centimetersTo_sq_kilometers=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[9],",")
-                outputField.update()
-                """ ...................FROM SQUARE METERS..............."""
-
             elif fromLengthDropdown.value==area7 and toLengthDropdown.value==str(list(areaList.keys())[0]):
-                outputField.value=sq_MetersTo_sq_inch=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[0],",")
+                outputField.value=sq_centimetersTo_sq_inch=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[0],",")
                 outputField.update()
             elif fromLengthDropdown.value==area7 and toLengthDropdown.value==str(list(areaList.keys())[1]):
-                outputField.value=sq_MetersTo_sq_feet=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[1],",")
+                outputField.value=sq_centimetersTo_sq_feet=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[1],",")
                 outputField.update()
             elif fromLengthDropdown.value==area7 and toLengthDropdown.value==str(list(areaList.keys())[2]):
-                outputField.value=sq_MetersTo_sq_Yard=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[2],",")
+                outputField.value=sq_centimetersTo_sq_Yard=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[2],",")
                 outputField.update()
             elif fromLengthDropdown.value==area7 and toLengthDropdown.value==str(list(areaList.keys())[4]):
-                outputField.value=sq_MetersTo_sq_acres=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[4],",")
+                outputField.value=sq_centimetersTo_sq_acres=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[4],",")
                 outputField.update()
             elif fromLengthDropdown.value==area7 and toLengthDropdown.value==str(list(areaList.keys())[5]):
-                outputField.value=sq_MetersTo_sq_hectares=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[5],",")
+                outputField.value=sq_centimetersTo_sq_hectares=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[5],",")
                 outputField.update()
-            elif fromLengthDropdown.value==area7 and toLengthDropdown.value==str(list(areaList.keys())[6]):
-                outputField.value=sq_MetersTo_sq_milimeters=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[6],",")
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[6]):
+                outputField.value=sq_centimetersTo_sq_milimeters=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[6],",")
                 outputField.update()
-            elif fromLengthDropdown.value==area7 and toLengthDropdown.value==str(list(areaList.keys())[7]):
-                outputField.value=sq_MetersTo_sq_centimeters=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[7],",")
+            elif fromLengthDropdown.value==area7 and toLengthDropdown.value==str(list(areaList.keys())[3]):
+                outputField.value=sq_centimetersTo_sq_miles=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[3],",")
                 outputField.update()
             elif fromLengthDropdown.value==area7 and toLengthDropdown.value==str(list(areaList.keys())[8]):
-                outputField.value=sq_MetersTo_sq_meters=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[8],",")
+                outputField.value=sq_centimetersTo_sq_meters=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[8],",")
                 outputField.update()
             elif fromLengthDropdown.value==area7 and toLengthDropdown.value==str(list(areaList.keys())[9]):
-                outputField.value=sq_MetersTo_sq_kilometers=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[9],",")
+                outputField.value=sq_centimetersTo_sq_kilometers=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[9],",")
                 outputField.update()
 
 
-                """ ...................FROM SQUARE  MILIMETERS..............."""
+                """ ...................FROM SQUARE  METERS..............."""
 
             elif fromLengthDropdown.value==area8 and toLengthDropdown.value==str(list(areaList.keys())[0]):
                 outputField.value=sq_MetersTo_sq_inch=format(userinputValue*list(areaList.values())[8]/list(areaList.values())[0],",")
@@ -697,7 +669,7 @@ def main (page: ft.Page):
                 outputField.value=sq_MetersTo_sq_feet=format(userinputValue*list(areaList.values())[8]/list(areaList.values())[1],",")
                 outputField.update()
             elif fromLengthDropdown.value==area8 and toLengthDropdown.value==str(list(areaList.keys())[2]):
-                outputField.value=sq_MileTo_sq_Yard=format(userinputValue*list(areaList.values())[8]/list(areaList.values())[2],",")
+                outputField.value=sq_MetersTo_sq_Yard=format(userinputValue*list(areaList.values())[8]/list(areaList.values())[2],",")
                 outputField.update()
             elif fromLengthDropdown.value==area8 and toLengthDropdown.value==str(list(areaList.keys())[4]):
                 outputField.value=sq_MetersTo_sq_acres=format(userinputValue*list(areaList.values())[8]/list(areaList.values())[4],",")
@@ -711,8 +683,8 @@ def main (page: ft.Page):
             elif fromLengthDropdown.value==area8 and toLengthDropdown.value==str(list(areaList.keys())[7]):
                 outputField.value=sq_MetersTo_sq_centimeters=format(userinputValue*list(areaList.values())[8]/list(areaList.values())[7],",")
                 outputField.update()
-            elif fromLengthDropdown.value==area8 and toLengthDropdown.value==str(list(areaList.keys())[8]):
-                outputField.value=sq_MetersTo_sq_meters=format(userinputValue*list(areaList.values())[8]/list(areaList.values())[8],",")
+            elif fromLengthDropdown.value==area8 and toLengthDropdown.value==str(list(areaList.keys())[3]):
+                outputField.value=sq_MetersTo_sq_meters=format(userinputValue*list(areaList.values())[8]/list(areaList.values())[3],",")
                 outputField.update()
             elif fromLengthDropdown.value==area8 and toLengthDropdown.value==str(list(areaList.keys())[9]):
                 outputField.value=sq_MetersTo_sq_kilometers=format(userinputValue*list(areaList.values())[8]/list(areaList.values())[9],",")
@@ -744,8 +716,8 @@ def main (page: ft.Page):
             elif fromLengthDropdown.value==area9 and toLengthDropdown.value==str(list(areaList.keys())[8]):
                 outputField.value=sq_KilometersTo_sq_meters=format(userinputValue*list(areaList.values())[9]/list(areaList.values())[8],",")
                 outputField.update()
-            elif fromLengthDropdown.value==area9 and toLengthDropdown.value==str(list(areaList.keys())[9]):
-                outputField.value=sq_KilometersTo_sq_miles=format(userinputValue*list(areaList.values())[9]/list(areaList.values())[2],",")
+            elif fromLengthDropdown.value==area9 and toLengthDropdown.value==str(list(areaList.keys())[3]):
+                outputField.value=sq_KilometersTo_sq_miles=format(userinputValue*list(areaList.values())[9]/list(areaList.values())[3],",")
                 outputField.update()
 
         except ValueError:
@@ -755,6 +727,11 @@ def main (page: ft.Page):
     outputField=TextField(value='1',width=.6*page.window.width,text_align=TextAlign.CENTER,autofocus=True)
     swapvalue=1/float(outputField.value.replace(",",''))
     # print(areaList.values())
+
+
+
+
+
 
 # TOGGLE BUTTONS
     """ returns the reverse conversion of the current choice"""
@@ -815,8 +792,23 @@ def main (page: ft.Page):
     toLengthDropdown.on_change=compute
     page.update()
     # swapvalue=1/float(outputField.value.replace(",",''))
+    """..........INCREMENT OR REDUCE VALUE BY 1"""
+    def addition(e):
+        x=userinput.value
+        y=float(x)+1
+        userinput.value=y
+        userinput.update()
+    def minus(e):
+        x=userinput.value
+        y=float(x)-1
+        userinput.value=y
+        userinput.update()
 
+  
 
+    addition_button=IconButton(icon=icons.ADD_CIRCLE_OUTLINE_OUTLINED,on_click=addition)
+    minus_button=IconButton(icon=icons.REMOVE_CIRCLE_OUTLINE,on_click=minus,padding=2)
+    page.update()
 # ADDITION OF CONTROLS ONTO THE PAGE
     page.add(SafeArea(
         content=Column(
@@ -824,10 +816,10 @@ def main (page: ft.Page):
             controls=[
                 typeContainer,
                 Container(
-                    padding=padding.only(top=0,bottom=1),
+                    padding=padding.only(top=10,bottom=40),
                     content=(
                         Row(
-                            height=60,
+                            # height=60,
                             alignment=MainAxisAlignment.CENTER,
                             controls=[
                                 fromLengthDropdown,ReverseBtn,toLengthDropdown,
@@ -839,9 +831,10 @@ def main (page: ft.Page):
                     padding=padding.only(top=0,bottom=1),
                     content=(
                         Row(
+                            spacing=7,
                             alignment=MainAxisAlignment.CENTER,
                             controls=[
-                                userinput,
+                                minus_button,userinput,addition_button
                             ]
                         )
                     )
@@ -862,7 +855,9 @@ def main (page: ft.Page):
             ]
         )
     )
-)
+),
+
+    
 
     page.update()
 app(target=main,assets_dir="assets")
