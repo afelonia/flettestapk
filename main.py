@@ -2,10 +2,13 @@ import flet as ft
 from flet import *
 
 def main (page: ft.Page):
-    # page.window.always_on_top=True
+    page.window.always_on_top=True
     page.window.resizable=True
-    # page.window.width=320
-
+    page.window.width=320
+    # page.window.title_bar_hidden=True
+    page.window.visible=True
+    # page.window.frameless=True
+    page.window.center=True
     page.title="myConverter"
 
 
@@ -49,7 +52,7 @@ def main (page: ft.Page):
         'ft\u00b2': 0.09290304,
         'yd\u00b2': 0.83612736,
         'mi\u00b2': 2589988.110336,
-        'ac\u00b2': 4046.8564224,
+        'ac': 4046.8564224,
         'ha':10000,
         'mm\u00b2': 0.000001,
         'cm\u00b2': 0.0001,
@@ -93,7 +96,7 @@ def main (page: ft.Page):
             toLengthDropdown.update()
 
     type_radio=RadioGroup(
-        value=txtType[0],
+        value=txtType[1],
         content=Row(
             alignment=MainAxisAlignment.CENTER,
             controls=[
@@ -118,20 +121,21 @@ def main (page: ft.Page):
         width=0.2*page.window.width,
         padding=padding.only(top=0,bottom=0),
         label="From",
-        value=list(lengthList.keys())[6],
+        value=list(areaList.keys())[8],
         label_style=TextStyle(weight=FontWeight.W_200,color=colors.ORANGE),
         options=[
-            dropdown.Option(choice) for choice in list(lengthList.keys())
-            ]      
+            dropdown.Option(choice) for choice in list(areaList.keys())
+            ],      
+            # on_change=compute,
     )
     toLengthDropdown=Dropdown(
         width=0.2*page.window.width,
         padding=padding.only(top=0,bottom=0),
         label="To",
-        value=list(lengthList.keys())[6],
+        value=list(areaList.keys())[8],
         label_style=TextStyle(weight=FontWeight.W_200,color=colors.ORANGE),
         options=[
-            dropdown.Option(choice) for choice in list(lengthList.keys())
+            dropdown.Option(choice) for choice in list(areaList.keys())
             ]
         
     )
@@ -141,6 +145,13 @@ def main (page: ft.Page):
     val2,val3=str(list(lengthList.keys())[2]),str(list(lengthList.keys())[3])
     val4,val5=str(list(lengthList.keys())[4]),str(list(lengthList.keys())[5])
     val6,val7=str(list(lengthList.keys())[6]),str(list(lengthList.keys())[7])
+
+    area0,area1=str(list(areaList.keys())[0]),str(list(areaList.keys())[1])
+    area2,area3=str(list(areaList.keys())[2]),str(list(areaList.keys())[3])
+    area4,area5=str(list(areaList.keys())[4]),str(list(areaList.keys())[5])
+    area6,area7=str(list(areaList.keys())[6]),str(list(areaList.keys())[7])
+    area8,area9=str(list(areaList.keys())[8]),str(list(areaList.keys())[9])
+# COMPUTE THE RESULT
 # COMPUTE THE RESULT
     # in2ft=list(lengthList.values())[0]/list(lengthList.values())[1]
     # ft2in=1/in2ft
@@ -162,7 +173,7 @@ def main (page: ft.Page):
                 # CONVERSION OF INCH TO ANY....................................................................
                 # TO FEET 
             elif fromLengthDropdown.value==val0 and toLengthDropdown.value==str(list(lengthList.keys())[1]):
-                outputField.value=in2ft="="+format(round(userinputValue*list(lengthList.values())[0]/list(lengthList.values())[1],8),",")+list(lengthList.keys())[0]
+                outputField.value=in2ft=format(round(userinputValue*list(lengthList.values())[0]/list(lengthList.values())[1],8),",")
                 outputField.update()
                 # TO YARD
             elif fromLengthDropdown.value==val0 and toLengthDropdown.value==str(list(lengthList.keys())[2]):
@@ -399,47 +410,375 @@ def main (page: ft.Page):
                 outputField.value=km2m=format(userinputValue*list(lengthList.values())[7]/list(lengthList.values())[6],",")
                 outputField.update()
 
+                
+
+                """ ...................AREA CONVERSION..............."""
+
+                """ ...................FROM SQUARE INCH..............."""
+
+            elif fromLengthDropdown.value==area0 and toLengthDropdown.value==str(list(areaList.keys())[1]):
+                outputField.value=sq_inTo_sq_ft=format(userinputValue*list(areaList.values())[0]/list(areaList.values())[1],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area0 and toLengthDropdown.value==str(list(areaList.keys())[2]):
+                outputField.value=sq_inTo_sq_yd=format(userinputValue*list(areaList.values())[0]/list(areaList.values())[2],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area0 and toLengthDropdown.value==str(list(areaList.keys())[3]):
+                outputField.value=sq_inTo_sq_mile=format(userinputValue*list(areaList.values())[0]/list(areaList.values())[3],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area0 and toLengthDropdown.value==str(list(areaList.keys())[4]):
+                outputField.value=sq_inTo_sq_acres=format(userinputValue*list(areaList.values())[0]/list(areaList.values())[4],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area0 and toLengthDropdown.value==str(list(areaList.keys())[5]):
+                outputField.value=sq_inTo_sq_hectares=format(userinputValue*list(areaList.values())[0]/list(areaList.values())[5],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area0 and toLengthDropdown.value==str(list(areaList.keys())[6]):
+                outputField.value=sq_inTo_sq_milimeters=format(userinputValue*list(areaList.values())[0]/list(areaList.values())[6],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area0 and toLengthDropdown.value==str(list(areaList.keys())[7]):
+                outputField.value=sq_inTo_sq_centimeters=format(userinputValue*list(areaList.values())[0]/list(areaList.values())[7],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area0 and toLengthDropdown.value==str(list(areaList.keys())[8]):
+                outputField.value=sq_inTo_sq_meters=format(userinputValue*list(areaList.values())[0]/list(areaList.values())[8],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area0 and toLengthDropdown.value==str(list(areaList.keys())[9]):
+                outputField.value=sq_inTo_sq_kilometers=format(userinputValue*list(areaList.values())[0]/list(areaList.values())[9],",")
+                outputField.update()
+
+
+
+
+                """ ...................FROM SQUARE FEET..............."""
+
+            elif fromLengthDropdown.value==area1 and toLengthDropdown.value==str(list(areaList.keys())[0]):
+                outputField.value=sq_feetTo_sq_inch=format(userinputValue*list(areaList.values())[1]/list(areaList.values())[0],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area1 and toLengthDropdown.value==str(list(areaList.keys())[2]):
+                outputField.value=sq_feetTo_sq_yd=format(userinputValue*list(areaList.values())[1]/list(areaList.values())[2],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area1 and toLengthDropdown.value==str(list(areaList.keys())[3]):
+                outputField.value=sq_feetTo_sq_mile=format(userinputValue*list(areaList.values())[1]/list(areaList.values())[3],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area1 and toLengthDropdown.value==str(list(areaList.keys())[4]):
+                outputField.value=sq_feetTo_sq_acres=format(userinputValue*list(areaList.values())[1]/list(areaList.values())[4],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area1 and toLengthDropdown.value==str(list(areaList.keys())[5]):
+                outputField.value=sq_feetTo_sq_hectares=format(userinputValue*list(areaList.values())[1]/list(areaList.values())[5],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area1 and toLengthDropdown.value==str(list(areaList.keys())[6]):
+                outputField.value=sq_feetTo_sq_milimeters=format(userinputValue*list(areaList.values())[1]/list(areaList.values())[6],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area1 and toLengthDropdown.value==str(list(areaList.keys())[7]):
+                outputField.value=sq_feetTo_sq_centimeters=format(userinputValue*list(areaList.values())[1]/list(areaList.values())[7],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area1 and toLengthDropdown.value==str(list(areaList.keys())[8]):
+                outputField.value=sq_feetTo_sq_meters=format(userinputValue*list(areaList.values())[1]/list(areaList.values())[8],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area1 and toLengthDropdown.value==str(list(areaList.keys())[9]):
+                outputField.value=sq_feetTo_sq_kilometers=format(userinputValue*list(areaList.values())[1]/list(areaList.values())[9],",")
+                outputField.update()
+
+
+                """ ...................FROM SQUARE YARD..............."""
+
+            elif fromLengthDropdown.value==area2 and toLengthDropdown.value==str(list(areaList.keys())[0]):
+                outputField.value=sq_YardTo_sq_inch=format(userinputValue*list(areaList.values())[2]/list(areaList.values())[0],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area2 and toLengthDropdown.value==str(list(areaList.keys())[1]):
+                outputField.value=sq_YardTo_sq_feet=format(userinputValue*list(areaList.values())[2]/list(areaList.values())[1],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area2 and toLengthDropdown.value==str(list(areaList.keys())[3]):
+                outputField.value=sq_YardTo_sq_mile=format(userinputValue*list(areaList.values())[2]/list(areaList.values())[3],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area2 and toLengthDropdown.value==str(list(areaList.keys())[4]):
+                outputField.value=sq_YardTo_sq_acres=format(userinputValue*list(areaList.values())[2]/list(areaList.values())[4],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area2 and toLengthDropdown.value==str(list(areaList.keys())[5]):
+                outputField.value=sq_YardTo_sq_hectares=format(userinputValue*list(areaList.values())[2]/list(areaList.values())[5],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area2 and toLengthDropdown.value==str(list(areaList.keys())[6]):
+                outputField.value=sq_YardTo_sq_milimeters=format(userinputValue*list(areaList.values())[2]/list(areaList.values())[6],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area2 and toLengthDropdown.value==str(list(areaList.keys())[7]):
+                outputField.value=sq_YardTo_sq_centimeters=format(userinputValue*list(areaList.values())[2]/list(areaList.values())[7],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area2 and toLengthDropdown.value==str(list(areaList.keys())[8]):
+                outputField.value=sq_YardTo_sq_meters=format(userinputValue*list(areaList.values())[2]/list(areaList.values())[8],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area2 and toLengthDropdown.value==str(list(areaList.keys())[9]):
+                outputField.value=sq_YardTo_sq_kilometers=format(userinputValue*list(areaList.values())[2]/list(areaList.values())[9],",")
+                outputField.update()
+
+
+
+                """ ...................FROM SQUARE MILE..............."""
+
+            elif fromLengthDropdown.value==area3 and toLengthDropdown.value==str(list(areaList.keys())[0]):
+                outputField.value=sq_MileTo_sq_inch=format(userinputValue*list(areaList.values())[3]/list(areaList.values())[0],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area3 and toLengthDropdown.value==str(list(areaList.keys())[1]):
+                outputField.value=sq_MileTo_sq_feet=format(userinputValue*list(areaList.values())[3]/list(areaList.values())[1],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area3 and toLengthDropdown.value==str(list(areaList.keys())[2]):
+                outputField.value=sq_MileTo_sq_Yard=format(userinputValue*list(areaList.values())[3]/list(areaList.values())[2],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area3 and toLengthDropdown.value==str(list(areaList.keys())[4]):
+                outputField.value=sq_MileTo_sq_acres=format(userinputValue*list(areaList.values())[3]/list(areaList.values())[4],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area3 and toLengthDropdown.value==str(list(areaList.keys())[5]):
+                outputField.value=sq_MileTo_sq_hectares=format(userinputValue*list(areaList.values())[3]/list(areaList.values())[5],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area3 and toLengthDropdown.value==str(list(areaList.keys())[6]):
+                outputField.value=sq_MileTo_sq_milimeters=format(userinputValue*list(areaList.values())[3]/list(areaList.values())[6],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area3 and toLengthDropdown.value==str(list(areaList.keys())[7]):
+                outputField.value=sq_MileTo_sq_centimeters=format(userinputValue*list(areaList.values())[3]/list(areaList.values())[7],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area3 and toLengthDropdown.value==str(list(areaList.keys())[8]):
+                outputField.value=sq_MileTo_sq_meters=format(userinputValue*list(areaList.values())[3]/list(areaList.values())[8],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area3 and toLengthDropdown.value==str(list(areaList.keys())[9]):
+                outputField.value=sq_MileTo_sq_kilometers=format(userinputValue*list(areaList.values())[3]/list(areaList.values())[9],",")
+                outputField.update()
+
+
+                """ ...................FROM  ACRES..............."""
+
+            elif fromLengthDropdown.value==area4 and toLengthDropdown.value==str(list(areaList.keys())[0]):
+                outputField.value=acresTo_sq_inch=format(userinputValue*list(areaList.values())[4]/list(areaList.values())[0],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area4 and toLengthDropdown.value==str(list(areaList.keys())[1]):
+                outputField.value=acresTo_sq_feet=format(userinputValue*list(areaList.values())[4]/list(areaList.values())[1],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area4 and toLengthDropdown.value==str(list(areaList.keys())[2]):
+                outputField.value=acresTo_sq_Yard=format(userinputValue*list(areaList.values())[4]/list(areaList.values())[2],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area4 and toLengthDropdown.value==str(list(areaList.keys())[4]):
+                outputField.value=acresTo_sq_acres=format(userinputValue*list(areaList.values())[4]/list(areaList.values())[3],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area4 and toLengthDropdown.value==str(list(areaList.keys())[5]):
+                outputField.value=acresTo_sq_hectares=format(userinputValue*list(areaList.values())[4]/list(areaList.values())[5],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area4 and toLengthDropdown.value==str(list(areaList.keys())[6]):
+                outputField.value=acresTo_sq_milimeters=format(userinputValue*list(areaList.values())[4]/list(areaList.values())[6],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area4 and toLengthDropdown.value==str(list(areaList.keys())[7]):
+                outputField.value=acresTo_sq_centimeters=format(userinputValue*list(areaList.values())[4]/list(areaList.values())[7],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area4 and toLengthDropdown.value==str(list(areaList.keys())[8]):
+                outputField.value=acresTo_sq_meters=format(userinputValue*list(areaList.values())[4]/list(areaList.values())[8],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area4 and toLengthDropdown.value==str(list(areaList.keys())[9]):
+                outputField.value=acresTo_sq_kilometers=format(userinputValue*list(areaList.values())[4]/list(areaList.values())[9],",")
+                outputField.update()
+                """ ...................FROM   HECTACRES..............."""
+
+            elif fromLengthDropdown.value==area5 and toLengthDropdown.value==str(list(areaList.keys())[0]):
+                outputField.value=sq_hectaresTo_sq_inch=format(userinputValue*list(areaList.values())[5]/list(areaList.values())[0],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area5 and toLengthDropdown.value==str(list(areaList.keys())[1]):
+                outputField.value=sq_hectaresTo_sq_feet=format(userinputValue*list(areaList.values())[5]/list(areaList.values())[1],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area5 and toLengthDropdown.value==str(list(areaList.keys())[2]):
+                outputField.value=sq_hectaresTo_sq_Yard=format(userinputValue*list(areaList.values())[5]/list(areaList.values())[2],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area5 and toLengthDropdown.value==str(list(areaList.keys())[4]):
+                outputField.value=sq_hectaresTo_sq_acres=format(userinputValue*list(areaList.values())[5]/list(areaList.values())[4],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area5 and toLengthDropdown.value==str(list(areaList.keys())[5]):
+                outputField.value=sq_hectaresTo_sq_hectares=format(userinputValue*list(areaList.values())[4]/list(areaList.values())[5],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area5 and toLengthDropdown.value==str(list(areaList.keys())[6]):
+                outputField.value=sq_hectaresTo_sq_milimeters=format(userinputValue*list(areaList.values())[5]/list(areaList.values())[6],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area5 and toLengthDropdown.value==str(list(areaList.keys())[7]):
+                outputField.value=sq_hectaresTo_sq_centimeters=format(userinputValue*list(areaList.values())[5]/list(areaList.values())[7],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area5 and toLengthDropdown.value==str(list(areaList.keys())[8]):
+                outputField.value=sq_hectaresTo_sq_meters=format(userinputValue*list(areaList.values())[5]/list(areaList.values())[8],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area5 and toLengthDropdown.value==str(list(areaList.keys())[9]):
+                outputField.value=sq_hectaresTo_sq_kilometers=format(userinputValue*list(areaList.values())[4]/list(areaList.values())[9],",")
+                outputField.update()
+                """ ...................FROM SQUARE  MILIMETERS..............."""
+
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[0]):
+                outputField.value=sq_MilimetersTo_sq_inch=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[0],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[1]):
+                outputField.value=sq_MilimetersTo_sq_feet=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[1],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[2]):
+                outputField.value=sq_MilimetersTo_sq_Yard=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[2],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[4]):
+                outputField.value=sq_MilimetersTo_sq_acres=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[4],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[5]):
+                outputField.value=sq_MilimetersTo_sq_hectares=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[5],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[6]):
+                outputField.value=sq_MilimetersTo_sq_milimeters=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[6],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[7]):
+                outputField.value=sq_MilimetersTo_sq_centimeters=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[7],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[8]):
+                outputField.value=sq_MilimetersTo_sq_meters=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[8],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[9]):
+                outputField.value=sq_MilimetersTo_sq_kilometers=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[9],",")
+                outputField.update()
+                """ ...................FROM SQUARE  CENTIMETERS..............."""
+
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[0]):
+                outputField.value=sq_centimetersTo_sq_inch=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[0],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[1]):
+                outputField.value=sq_centimetersTo_sq_feet=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[1],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[2]):
+                outputField.value=sq_centimetersTo_sq_Yard=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[2],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[4]):
+                outputField.value=sq_centimetersTo_sq_acres=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[4],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[5]):
+                outputField.value=sq_centimetersTo_sq_hectares=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[5],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[6]):
+                outputField.value=sq_centimetersTo_sq_milimeters=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[6],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[7]):
+                outputField.value=sq_centimetersTo_sq_centimeters=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[7],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[8]):
+                outputField.value=sq_centimetersTo_sq_meters=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[8],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area6 and toLengthDropdown.value==str(list(areaList.keys())[9]):
+                outputField.value=sq_centimetersTo_sq_kilometers=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[9],",")
+                outputField.update()
+                """ ...................FROM SQUARE METERS..............."""
+
+            elif fromLengthDropdown.value==area7 and toLengthDropdown.value==str(list(areaList.keys())[0]):
+                outputField.value=sq_MetersTo_sq_inch=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[0],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area7 and toLengthDropdown.value==str(list(areaList.keys())[1]):
+                outputField.value=sq_MetersTo_sq_feet=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[1],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area7 and toLengthDropdown.value==str(list(areaList.keys())[2]):
+                outputField.value=sq_MetersTo_sq_Yard=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[2],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area7 and toLengthDropdown.value==str(list(areaList.keys())[4]):
+                outputField.value=sq_MetersTo_sq_acres=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[4],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area7 and toLengthDropdown.value==str(list(areaList.keys())[5]):
+                outputField.value=sq_MetersTo_sq_hectares=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[5],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area7 and toLengthDropdown.value==str(list(areaList.keys())[6]):
+                outputField.value=sq_MetersTo_sq_milimeters=format(userinputValue*list(areaList.values())[6]/list(areaList.values())[6],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area7 and toLengthDropdown.value==str(list(areaList.keys())[7]):
+                outputField.value=sq_MetersTo_sq_centimeters=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[7],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area7 and toLengthDropdown.value==str(list(areaList.keys())[8]):
+                outputField.value=sq_MetersTo_sq_meters=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[8],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area7 and toLengthDropdown.value==str(list(areaList.keys())[9]):
+                outputField.value=sq_MetersTo_sq_kilometers=format(userinputValue*list(areaList.values())[7]/list(areaList.values())[9],",")
+                outputField.update()
+
+
+                """ ...................FROM SQUARE  MILIMETERS..............."""
+
+            elif fromLengthDropdown.value==area8 and toLengthDropdown.value==str(list(areaList.keys())[0]):
+                outputField.value=sq_MetersTo_sq_inch=format(userinputValue*list(areaList.values())[8]/list(areaList.values())[0],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area8 and toLengthDropdown.value==str(list(areaList.keys())[1]):
+                outputField.value=sq_MetersTo_sq_feet=format(userinputValue*list(areaList.values())[8]/list(areaList.values())[1],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area8 and toLengthDropdown.value==str(list(areaList.keys())[2]):
+                outputField.value=sq_MileTo_sq_Yard=format(userinputValue*list(areaList.values())[8]/list(areaList.values())[2],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area8 and toLengthDropdown.value==str(list(areaList.keys())[4]):
+                outputField.value=sq_MetersTo_sq_acres=format(userinputValue*list(areaList.values())[8]/list(areaList.values())[4],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area8 and toLengthDropdown.value==str(list(areaList.keys())[5]):
+                outputField.value=sq_MetersTo_sq_hectares=format(userinputValue*list(areaList.values())[8]/list(areaList.values())[5],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area8 and toLengthDropdown.value==str(list(areaList.keys())[6]):
+                outputField.value=sq_MetersTo_sq_milimeters=format(userinputValue*list(areaList.values())[8]/list(areaList.values())[6],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area8 and toLengthDropdown.value==str(list(areaList.keys())[7]):
+                outputField.value=sq_MetersTo_sq_centimeters=format(userinputValue*list(areaList.values())[8]/list(areaList.values())[7],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area8 and toLengthDropdown.value==str(list(areaList.keys())[8]):
+                outputField.value=sq_MetersTo_sq_meters=format(userinputValue*list(areaList.values())[8]/list(areaList.values())[8],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area8 and toLengthDropdown.value==str(list(areaList.keys())[9]):
+                outputField.value=sq_MetersTo_sq_kilometers=format(userinputValue*list(areaList.values())[8]/list(areaList.values())[9],",")
+                outputField.update()
+
+                """ ...................FROM SQUARE  KILOMETERS..............."""
+
+            elif fromLengthDropdown.value==area9 and toLengthDropdown.value==str(list(areaList.keys())[0]):
+                outputField.value=sq_KilometersTo_sq_inch=format(userinputValue*list(areaList.values())[9]/list(areaList.values())[0],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area9 and toLengthDropdown.value==str(list(areaList.keys())[1]):
+                outputField.value=sq_KilometersTo_sq_feet=format(userinputValue*list(areaList.values())[9]/list(areaList.values())[1],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area9 and toLengthDropdown.value==str(list(areaList.keys())[2]):
+                outputField.value=sq_KilomileTo_sq_Yard=format(userinputValue*list(areaList.values())[9]/list(areaList.values())[2],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area9 and toLengthDropdown.value==str(list(areaList.keys())[4]):
+                outputField.value=sq_KilometersTo_sq_acres=format(userinputValue*list(areaList.values())[9]/list(areaList.values())[4],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area9 and toLengthDropdown.value==str(list(areaList.keys())[5]):
+                outputField.value=sq_KilometersTo_sq_hectares=format(userinputValue*list(areaList.values())[9]/list(areaList.values())[5],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area9 and toLengthDropdown.value==str(list(areaList.keys())[6]):
+                outputField.value=sq_KilometersTo_sq_milimeters=format(userinputValue*list(areaList.values())[9]/list(areaList.values())[6],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area9 and toLengthDropdown.value==str(list(areaList.keys())[7]):
+                outputField.value=sq_KilometersTo_sq_centimeters=format(userinputValue*list(areaList.values())[9]/list(areaList.values())[7],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area9 and toLengthDropdown.value==str(list(areaList.keys())[8]):
+                outputField.value=sq_KilometersTo_sq_meters=format(userinputValue*list(areaList.values())[9]/list(areaList.values())[8],",")
+                outputField.update()
+            elif fromLengthDropdown.value==area9 and toLengthDropdown.value==str(list(areaList.keys())[9]):
+                outputField.value=sq_KilometersTo_sq_miles=format(userinputValue*list(areaList.values())[9]/list(areaList.values())[2],",")
+                outputField.update()
+
         except ValueError:
             outputField.border_color=colors.RED
             outputField.update()
             print("null")
-# CLEAR FIELDS
-        """ returns the reverse conversion of the current choice"""
+    outputField=TextField(value='1',width=.6*page.window.width,text_align=TextAlign.CENTER,autofocus=True)
+    swapvalue=1/float(outputField.value.replace(",",''))
+    # print(areaList.values())
+
+# TOGGLE BUTTONS
+    """ returns the reverse conversion of the current choice"""
+    swapLeft=fromLengthDropdown.value 
+    value_be4_swap=outputField.value
     toggle_state=True
-    swapLeft,swapRight=fromLengthDropdown.value,toLengthDropdown.value  
     def reversedConversion(e):
-        global toggle_state
-        if toggle_state:
-            outputField.value=3
-            page.update()
-            outputField=swapvalue
-            outputField.update()
-            
+        nonlocal toggle_state
+        toggle_state = not toggle_state
+        value_be4_swap=str(outputField.value)
+        outputField.value= 1/float(value_be4_swap.replace(",",'')) if toggle_state else 1/float(value_be4_swap.replace(",",''))
+        
+        if  toggle_state:
+            fromLengthDropdown.value,toLengthDropdown.value=toLengthDropdown.value,fromLengthDropdown.value
         else:
-            # outputField.value=swapvalue
-            outputField.value=2
-            outputField.value.update()
-            toggle_state=True
+            fromLengthDropdown.value,toLengthDropdown.value=toLengthDropdown.value,fromLengthDropdown.value
 
-        # ............Swap the labels.........................................................
-    
-
-        # toggle_state=not toggle_state
+        ReverseBtn.text = "ON" if toggle_state else "OFF"
+        ReverseBtn.bgcolor = ft.colors.GREEN if toggle_state else ft.colors.RED
         page.update()
 
+    ReverseBtn= IconButton(icon=icons.SWAP_HORIZ_SHARP,height=40,width=40,bgcolor=ft.colors.GREEN,on_click=reversedConversion)
+    
 
-    ReverseBtn= IconButton(icon=icons.SWAP_HORIZ_SHARP,height=40,width=40,on_click=reversedConversion)
-     
-
-
-# SUBMIT BUTTON
-    calculateBtn=Row(
-        # width=100,
-        alignment=MainAxisAlignment.CENTER,
-        controls=[
-            TextButton("Calculate",on_click=compute,style=ButtonStyle(color='red',bgcolor=colors.GREEN_200)),
-                ]
-                    )
 # RESULT TEXT
     resultText=Row(
         # width=100,
@@ -464,16 +803,19 @@ def main (page: ft.Page):
     
 # THE OUTPUT FIELD
     outputField=TextField(value='1',width=.6*page.window.width,text_align=TextAlign.CENTER,autofocus=True)
-    swapvalue=1/float(outputField.value.replace(",",''))
+    
 
-    # outPutField=Row(
-    #     alignment=MainAxisAlignment.CENTER,
-    #     controls=[
-    #             outputField
-    #             ]
-    #                 )
+    """.........RUNNING FUNCTIONS ON CHANGE OF EVENTS................"""
+    def combined_function(e):
+        checkField(e)
+        compute(e)
+        page.update()
+    userinput.on_change=combined_function
+    fromLengthDropdown.on_change=compute
+    toLengthDropdown.on_change=compute
+    page.update()
+    # swapvalue=1/float(outputField.value.replace(",",''))
 
-    # print(fromLengthDropdown.options[2].key)
 
 # ADDITION OF CONTROLS ONTO THE PAGE
     page.add(SafeArea(
@@ -503,7 +845,7 @@ def main (page: ft.Page):
                             ]
                         )
                     )
-                ),calculateBtn,
+                ),
                 Container(
                     padding=padding.only(left=10,bottom=0),
                     margin=margin.only(left=10),
@@ -523,4 +865,4 @@ def main (page: ft.Page):
 )
 
     page.update()
-app(target=main)
+app(target=main,assets_dir="assets")
