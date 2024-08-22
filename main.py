@@ -2,10 +2,9 @@ import flet as ft
 from flet import *
 
 def main (page: ft.Page):
-    page.window.always_on_top=True
+    # page.window.always_on_top=True
     page.window.resizable=True
-    # page.window.width=320
-    # page.window.title_bar_hidden=True
+
     page.window.visible=True
     # page.window.frameless=True
     page.window.center=True
@@ -14,7 +13,7 @@ def main (page: ft.Page):
    
 
     # USER INPUT FOR VALUE TO BE CONVERTED
-    userinput=TextField(value=1,label='value to convert',bgcolor="#B0B0B0",width=0.6*page.window.width,text_align=TextAlign.CENTER,autofocus=True,keyboard_type=KeyboardType.NUMBER,adaptive=True,label_style=TextStyle(size=18,weight=FontWeight.BOLD),)
+    userinput=TextField(value=1,label='value to convert',bgcolor="#B0B0B0",width=200,text_align=TextAlign.CENTER,autofocus=True,keyboard_type=KeyboardType.NUMBER,adaptive=True,label_style=TextStyle(size=18,weight=FontWeight.BOLD),)
     userinputValue=userinput.value
     # CHECK VALIDITY FOR USER INPUT4
     def checkField(e):
@@ -119,7 +118,7 @@ def main (page: ft.Page):
     )
 # LENGTH DROPDOWN
     fromLengthDropdown=Dropdown(
-        width=0.2*page.window.width,
+        width=100,
         padding=padding.only(top=0,bottom=0),
         label="From",
         value=list(areaList.keys())[8],
@@ -130,7 +129,7 @@ def main (page: ft.Page):
             # on_change=compute,
     )
     toLengthDropdown=Dropdown(
-        width=0.2*page.window.width,
+        width=100,
         padding=padding.only(top=0,bottom=0),
         label="To",
         value=list(areaList.keys())[8],
@@ -725,7 +724,7 @@ def main (page: ft.Page):
 
                 print("null")
         page.update()
-    outputField=TextField(value='1',width=.6*page.window.width,text_align=TextAlign.CENTER,autofocus=True)
+    outputField=TextField(value='1',width=100,text_align=TextAlign.CENTER,autofocus=True)
     swapvalue=1/float(outputField.value.replace(",",''))
     # print(areaList.values())
 
@@ -757,14 +756,7 @@ def main (page: ft.Page):
     ReverseBtn= IconButton(icon=icons.SWAP_HORIZ_SHARP,height=40,width=40,bgcolor=ft.colors.GREEN,on_click=reversedConversion)
     
 
-# RESULT TEXT
-    resultText=Row(
-        # width=100,
-        alignment=MainAxisAlignment.CENTER,
-        controls=[
-                Text(value='Answer')
-                ]
-                    )
+
 # CLEAR FIELDS
     def clearFields(e):
         userinput.value=''
@@ -780,7 +772,7 @@ def main (page: ft.Page):
                     )
     
 # THE OUTPUT FIELD
-    outputField=TextField(value='1',width=.6*page.window.width,text_align=TextAlign.CENTER,autofocus=True)
+    outputField=TextField(value='1',width=200,text_align=TextAlign.CENTER,autofocus=True)
     
 
     """.........RUNNING FUNCTIONS ON CHANGE OF EVENTS................"""
@@ -841,20 +833,20 @@ def main (page: ft.Page):
                     )
                 ),
                 Container(
-                    padding=padding.only(left=10,bottom=0),
-                    margin=margin.only(left=10),
+                    # padding=padding.only(left=0,bottom=0),
+                    # margin=margin.only(left=10),
                     content=(
                         Row(
-                            alignment=MainAxisAlignment.CENTER,
-                            # spacing=40,
+                            alignment=MainAxisAlignment.START,
+                            spacing=5,
                             controls=[
-                                resultText,outputField
+                                Text(value='Result',width=65,size=22,style=TextStyle(weight=FontWeight.BOLD)),outputField
                             ]
                         )
                     )
                 ),clearButton,
                 
-                ft.Text(value="A product by:\n      Karyeija Felex",size=32,style=TextStyle(weight=FontWeight.BOLD)),
+                ft.Text(value="....A product by:\n...Karyeija Felex.....",size=32,style=TextStyle(weight=FontWeight.BOLD)),
 
 
             ]
