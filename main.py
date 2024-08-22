@@ -794,14 +794,14 @@ def main (page: ft.Page):
     # swapvalue=1/float(outputField.value.replace(",",''))
     """..........INCREMENT OR REDUCE VALUE BY 1"""
     def addition(e):
-        x=userinput.value
-        y=float(x)+1
-        userinput.value=y
+        userinput.value=float(userinput.value)
+        userinput.value+=1  
+        combined_function(e) 
         userinput.update()
     def minus(e):
-        x=userinput.value
-        y=float(x)-1
-        userinput.value=y
+        userinput.value=float(userinput.value)
+        userinput.value-=1  
+        combined_function(e) 
         userinput.update()
 
   
