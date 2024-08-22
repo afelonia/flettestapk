@@ -4,7 +4,7 @@ from flet import *
 def main (page: ft.Page):
     page.window.always_on_top=True
     page.window.resizable=True
-    page.window.width=320
+    # page.window.width=320
     # page.window.title_bar_hidden=True
     page.window.visible=True
     # page.window.frameless=True
@@ -721,9 +721,10 @@ def main (page: ft.Page):
                 outputField.update()
 
         except ValueError:
-            outputField.border_color=colors.RED
-            outputField.update()
-            print("null")
+                outputField.update()
+
+                print("null")
+        page.update()
     outputField=TextField(value='1',width=.6*page.window.width,text_align=TextAlign.CENTER,autofocus=True)
     swapvalue=1/float(outputField.value.replace(",",''))
     # print(areaList.values())
@@ -852,6 +853,10 @@ def main (page: ft.Page):
                         )
                     )
                 ),clearButton,
+                
+                ft.Text(value="A product by:\n      Karyeija Felex",size=32,style=TextStyle(weight=FontWeight.BOLD)),
+
+
             ]
         )
     )
